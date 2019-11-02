@@ -4,7 +4,7 @@ from .models import Post
 
 # Create your views here.
 def index(request):
-    posts = Post.objects.all()
+    posts = reversed(sorted(Post.objects.all().order_by(), key=lambda t: t.votes))
     context = {
         'posts':posts
     }
