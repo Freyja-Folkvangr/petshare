@@ -1,0 +1,44 @@
+<form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group row justify-content-md-center">
+        <header class="jumbotron subhead" id="overview" style="padding: 2rem 4rem;">
+            <div class="row">
+                <table style="width:100%">
+                    {% for field in form %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <tr>
+                                    <div class="col-md-6">
+                                        <td style="width: 50%">
+                                            <label>
+                                                {% if field.help_text %}
+                                                    <span class="badge badge-info" data-toggle="tooltip"
+                                                          data-placement="top"
+                                                          title="{{ field.help_text }}">?</span>
+                                                {% endif %}
+                                                {{ field.label_tag }}</label>
+                                        </td>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <td style="width: 50%">{{ field }}</td>
+                                    </div>
+                                </tr>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </table>
+            </div>
+            {% for field in form %}
+                <div class="col-sm-offset-2">
+                    <span class="text-danger small">{{ field.errors }}</span>
+                </div>
+            {% endfor %}
+            <hr>
+            <div class="row">
+                <div class="col-2">
+                    <button type="submit" class="btn btn-success">Enviar</button>
+                </div>
+            </div>
+        </header>
+    </div>
+</form>

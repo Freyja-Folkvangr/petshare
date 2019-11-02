@@ -15,13 +15,26 @@
 
     <div class="card border-0 shadow mb-4">
         <div class="card-body">
-            <h5 class="m-0">hi:</h5>
+            <h5 class="m-0">Welcome!</h5>
             <hr>
             <ul>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
+                <li>Upload your pet photos</li>
+                <li>vote for the best ones!</li>
             </ul>
         </div>
     </div>
+    {% if posts %}
+        {% for post in posts %}
+            <div class="card border-0 shadow mb-4">
+                <div class="card-body">
+                    <h5 class="m-0">{{ post.pet_name }}, the {{ post.pet_type_str }}</h5>
+                    by {{ post.nickname }} on {{ post.date_posted }}
+                    <hr>
+                    <img src="{{ post.photo_path }}" width="250px" , height="200px">
+                    <hr>
+                    {{ post.comment }}
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
 {% endblock %}

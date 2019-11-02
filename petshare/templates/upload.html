@@ -1,0 +1,16 @@
+{% extends 'site_base.html' %}
+
+{% block head_title %} Upload {% endblock %}
+
+{% block head %}
+    {% load static %}
+{% endblock %}
+
+{% block masterhead %}
+    <h1>Upload</h1>
+    <h2>Use this form to upload your pet</h2>
+{% endblock %}
+
+{% block body %}
+        {% include 'form_template.html' %}
+{% endblock %}
