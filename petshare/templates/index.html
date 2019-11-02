@@ -19,8 +19,9 @@
             <hr>
             <ul>
                 <li>Upload your pet photos</li>
-                <li>vote for the best ones!</li>
+                <li>Vote for the best one!</li>
             </ul>
+            Notice that you can only cast one vote
         </div>
     </div>
     {% if posts %}
@@ -30,9 +31,19 @@
                     <h5 class="m-0">{{ post.pet_name }}, the {{ post.pet_type_str }}</h5>
                     by {{ post.nickname }} on {{ post.date_posted }}
                     <hr>
-                    <img src="{{ post.photo_path }}" width="250px" , height="200px">
-                    <hr>
-                    {{ post.comment }}
+                    <img src="{{ post.photo_path }}" width="250px" height="200px">
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{ post.comment }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="{% url 'petshare:vote' post.id %}">
+                                <button type="button" class="btn btn-primary">Vote {{ post.pet_name }}</button>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         {% endfor %}

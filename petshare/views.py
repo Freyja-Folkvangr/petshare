@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import new_pet
+from .forms import new_pet, vote_pet
 from .models import Post
 
 # Create your views here.
@@ -20,3 +20,19 @@ def upload(request):
         'form':form
     }
     return render(request, 'upload.html', context)
+
+def vote(request, pet):
+    form = vote_pet(request.POST or None)
+    post = Post.objects.get(pk=pet)
+    if form.is_valid():
+        vote = form.save(commit=False)
+
+        vote.photo_id = post
+
+        vote.save()
+        return redirect('index')
+    context = {
+        'form':form,
+        'post':post
+    }
+    return render(request, 'vote.html', context)

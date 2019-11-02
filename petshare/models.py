@@ -27,5 +27,5 @@ class Post(models.Model):
         return str(self.photo).replace('petshare/', '')
 
 class Vote(models.Model):
-    nickname = models.CharField(max_length=128, null=False, default='Unknown')
+    nickname = models.CharField(max_length=128, null=False, default='Unknown', help_text='Your nickname', unique=True)
     photo_id = models.ForeignKey(Post, on_delete=models.CASCADE)

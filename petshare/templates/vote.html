@@ -1,0 +1,16 @@
+{% extends 'site_base.html' %}
+
+{% block head_title %} Vote {% endblock %}
+
+{% block head %}
+    {% load static %}
+{% endblock %}
+
+{% block masterhead %}
+    <h1>Cast your vote</h1>
+    <h2>You are voting for {{ post.pet_name }}, the {{ post.pet_type_str }}</h2>
+{% endblock %}
+
+{% block body %}
+        {% include 'form_template.html' %}
+{% endblock %}
